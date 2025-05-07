@@ -1,0 +1,59 @@
+# dynamicResponse plugin configuration
+# Created or modified at 5/3/2025 3:30 PM
+
+# === IMPORTANT: YOU MUST CONFIGURE THESE VALUES ===
+# Set to 0 to disable the plugin, 1 to enable
+enabled 1
+
+# Your API key for the AI service (OpenAI, Mistral, Ollama, etc.)
+# REQUIRED: You must set this to a valid API key or the plugin will be disabled
+apiKey abc123
+
+# The API endpoint URL for your AI service
+# Examples:
+#  - OpenAI: https://api.openai.com/v1/chat/completions
+#  - Local Ollama: http://localhost:11434/v1/chat/completions
+#  - Other Local API: http://10.0.0.20:11435/v1/chat/completions (your current setting)
+apiEndpoint http://10.0.0.20:11435/v1/chat/completions
+
+# === MODEL CONFIGURATION ===
+# Model to use - must be available on your API endpoint
+# Examples: gpt-3.5-turbo, gpt-4, phi4-mini, llama3:latest, mixtral:8x7b, etc.
+model qwen3:14b
+
+# Maximum tokens (words) in the AI response
+maxTokens 70
+
+# Temperature controls randomness (0.1-1.0)
+# Lower = more predictable, Higher = more creative
+temperature 0.7
+
+# Character prompt for the AI
+personality /no_think You are Bobby, a novice in the world of Ragnarok Online. You mostly hang around the fields of Prontera, hunting for materials. Always respond according to this character.
+
+# === BEHAVIOR SETTINGS ===
+# Seconds to wait between API calls to avoid rate limits
+cooldown 2
+
+# Fall back to static responses (from chat_resp.txt) if API fails
+# 0 = no response on API failure, 1 = use static responses as fallback
+fallbackToStatic 1
+
+# Number of conversation exchanges to remember per user
+historySize 25
+
+# Log all AI responses to console (0 = off, 1 = on)
+logResponses 1
+
+# === PERFORMANCE SETTINGS ===
+# Use direct messaging for instant responses
+# 0 = use traditional system with typing delay, 1 = instant responses
+useDirectMessaging 1
+
+# === API SETTINGS ===
+# Format to use for API requests
+# "auto" = try to detect automatically
+# "openai" = standard OpenAI chat completion format
+# "ollama" = format for local Ollama server
+# "simple" = older completion API format
+apiFormat openai
